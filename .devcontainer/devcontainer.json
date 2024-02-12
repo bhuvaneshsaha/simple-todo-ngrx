@@ -35,7 +35,8 @@
 				"ms-mssql.mssql",
 				"GitHub.copilot",
 				"johnpapa.Angular2",
-				"bradlc.vscode-tailwindcss"
+				"bradlc.vscode-tailwindcss",
+				
 			]
 		}
 	},
