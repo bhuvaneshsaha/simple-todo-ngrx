@@ -2,7 +2,8 @@ using SimpleTodoList.Helpers.Extension;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddServices();
+
+builder.Services.AddServices(builder.Configuration);
 
 // -------------------------------------------------------------------------
 

@@ -2,15 +2,23 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using SimpleTodoList.Data;
+using SimpleTodoList.Repos;
+using SimpleTodoList.Services;
 
 namespace SimpleTodoList.Helpers.Extension;
 
 public static class DependencyInjection
 {
-    public static void AddServices(this IServiceCollection services)
+    public static void AddServices(this IServiceCollection services, IConfiguration configuration)
     {
+        services.AddDbContext<TodoDbContext>(options =>
+        {
+            options.UseSqlite(configuration.GetConnectionString("DefaultConnection"));
+        });
+
         services.AddControllers();
-        // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen();
 
@@ -23,5 +31,8 @@ public static class DependencyInjection
                 config.AllowAnyHeader();
             });
         });
+
+        services.AddScoped<ITodoRepo, TodoRepo>();
+        services.AddScoped<ITodoService, TodoService>();
     }
 }
