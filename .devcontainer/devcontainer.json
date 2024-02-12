@@ -36,7 +36,9 @@
 				"GitHub.copilot",
 				"johnpapa.Angular2",
 				"bradlc.vscode-tailwindcss",
-				"johnpapa.angular-essentials"
+				"johnpapa.angular-essentials",
+				"ms-dotnettools.csdevkit",
+				"kreativ-software.csharpextensions"
 			]
 		}
 	},
