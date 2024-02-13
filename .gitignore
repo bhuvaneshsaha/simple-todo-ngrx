@@ -485,3 +485,5 @@ $RECYCLE.BIN/
 
 .angular
 *.db
+*.db-shm
+*.db-wal
