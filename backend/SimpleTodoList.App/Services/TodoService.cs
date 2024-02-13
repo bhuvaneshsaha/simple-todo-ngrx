@@ -18,13 +18,13 @@ public class TodoService(ITodoRepo todoRepo) : ITodoService
         await todoRepo.SaveChangesAsync();
     }
 
-    public async Task<Todo> CreateTodoAsync(AddTodoDto todo)
+    public async Task<Todo> CreateTodoAsync(AddOrUpdateTodoDto todo)
     {
         var todoToAdd = new Todo
         {
             Title = todo.Title,
             Description = todo.Description,
-            IsCompleted = todo.IsCompleted,
+            IsCompleted = false,
             CreatedAt = DateTime.Now,
         };
         var createdTodo = await todoRepo.CreateTodoAsync(todoToAdd);
@@ -48,7 +48,7 @@ public class TodoService(ITodoRepo todoRepo) : ITodoService
         return await todoRepo.GetTodosAsync();
     }
 
-    public async Task<Todo> UpdateTodoAsync(Guid id, UpdateTodoDto todo)
+    public async Task<Todo> UpdateTodoAsync(Guid id, AddOrUpdateTodoDto todo)
     {
         var existingTodo = await todoRepo.GetTodoByIdAsync(id);
 
@@ -56,7 +56,6 @@ public class TodoService(ITodoRepo todoRepo) : ITodoService
 
         existingTodo.Title = todo.Title;
         existingTodo.Description = todo.Description;
-        existingTodo.IsCompleted = todo.IsCompleted;
         existingTodo.UpdatedAt = DateTime.Now;
         await todoRepo.UpdateTodoAsync(existingTodo);
         await todoRepo.SaveChangesAsync();

@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using SimpleTodoList.Core.Interfaces;
 using SimpleTodoList.Core.Models.Dtos;
 
@@ -22,14 +21,14 @@ public class TodoController(ITodoService todoService) : BaseController
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreateTodo([FromBody] AddTodoDto todo)
+    public async Task<IActionResult> CreateTodo([FromBody] AddOrUpdateTodoDto todo)
     {
         var createdTodo = await todoService.CreateTodoAsync(todo);
         return CreatedAtAction(nameof(GetTodoById), new { id = createdTodo.Id }, createdTodo);
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateTodo(Guid id, [FromBody] UpdateTodoDto todo)
+    public async Task<IActionResult> UpdateTodo(Guid id, [FromBody] AddOrUpdateTodoDto todo)
     {
         var updatedTodo = await todoService.UpdateTodoAsync(id, todo);
         return Ok(updatedTodo);
