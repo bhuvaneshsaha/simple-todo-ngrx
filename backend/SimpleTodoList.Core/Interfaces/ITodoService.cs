@@ -1,8 +1,8 @@
 
-using SimpleTodoList.Models.Dtos;
-using SimpleTodoList.Models.Entities;
+using SimpleTodoList.Core.Models.Dtos;
+using SimpleTodoList.Core.Models.Entities;
 
-namespace SimpleTodoList.Services;
+namespace SimpleTodoList.Core.Interfaces;
 
 public interface ITodoService
 {

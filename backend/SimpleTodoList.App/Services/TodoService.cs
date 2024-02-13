@@ -1,7 +1,9 @@
 
-using SimpleTodoList.Models.Dtos;
+using SimpleTodoList.Core.Models.Dtos;
+using SimpleTodoList.Core.Interfaces;
+using SimpleTodoList.Core.Entities;
 
-namespace SimpleTodoList.Services;
+namespace SimpleTodoList.App.Services;
 public class TodoService(ITodoRepo todoRepo) : ITodoService
 {
     public async Task CompleteTodoAsync(Guid id)
