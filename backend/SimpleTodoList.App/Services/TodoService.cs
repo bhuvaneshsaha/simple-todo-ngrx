@@ -1,8 +1,8 @@
 
+using CommunityToolkit.Diagnostics;
 using SimpleTodoList.Core.Models.Dtos;
 using SimpleTodoList.Core.Interfaces;
 using SimpleTodoList.Core.Models.Entities;
-using CommunityToolkit.Diagnostics;
 using SimpleTodoList.Core.Models;
 
 namespace SimpleTodoList.App.Services;
@@ -12,6 +12,9 @@ public class TodoService(ITodoRepo todoRepo) : ITodoService
     {
         var todo = await todoRepo.GetTodoByIdAsync(id);
         Guard.IsNotNull(todo);
+
+        if (todo.IsCompleted)
+            return;
 
         todo.IsCompleted = true;
         todo.CompletedAt = DateTime.Now;
