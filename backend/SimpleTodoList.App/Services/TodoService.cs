@@ -1,7 +1,8 @@
 
 using SimpleTodoList.Core.Models.Dtos;
 using SimpleTodoList.Core.Interfaces;
-using SimpleTodoList.Core.Entities;
+using SimpleTodoList.Core.Models.Entities;
+using CommunityToolkit.Diagnostics;
 
 namespace SimpleTodoList.App.Services;
 public class TodoService(ITodoRepo todoRepo) : ITodoService
@@ -9,7 +10,7 @@ public class TodoService(ITodoRepo todoRepo) : ITodoService
     public async Task CompleteTodoAsync(Guid id)
     {
         var todo = await todoRepo.GetTodoByIdAsync(id);
-        Guard.NotNull(todo, nameof(todo));
+        Guard.IsNotNull(todo);
 
         todo.IsCompleted = true;
         todo.CompletedAt = DateTime.Now;
@@ -51,7 +52,7 @@ public class TodoService(ITodoRepo todoRepo) : ITodoService
     {
         var existingTodo = await todoRepo.GetTodoByIdAsync(id);
 
-        Guard.NotNull(existingTodo, nameof(existingTodo));
+        Guard.IsNotNull(existingTodo);
 
         existingTodo.Title = todo.Title;
         existingTodo.Description = todo.Description;
