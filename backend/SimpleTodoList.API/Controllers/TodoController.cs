@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SimpleTodoList.Core.Interfaces;
 using SimpleTodoList.Core.Models.Dtos;
 
 namespace SimpleTodoList.API.Controllers;
 
+[Authorize]
 public class TodoController(ITodoService todoService) : BaseController
 {
     [HttpGet]
