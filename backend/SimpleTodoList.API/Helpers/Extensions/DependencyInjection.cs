@@ -1,6 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using SimpleTodoList.App.Services;
 using SimpleTodoList.Core.Interfaces;
+using SimpleTodoList.Core.Models.Entities;
 using SimpleTodoList.Infra.Data;
 using SimpleTodoList.Infra.Repos;
 
@@ -14,6 +16,16 @@ public static class DependencyInjection
         {
             options.UseSqlite(configuration.GetConnectionString("DefaultConnection"));
         });
+
+        services.AddIdentityCore<AppUser>()
+            .AddEntityFrameworkStores<TodoDbContext>()
+            .AddApiEndpoints();
+
+        services.AddAuthentication()
+            .AddBearerToken(IdentityConstants.BearerScheme);
+
+        services.AddAuthorizationBuilder();
+    
 
         services.AddControllers();
         services.AddEndpointsApiExplorer();

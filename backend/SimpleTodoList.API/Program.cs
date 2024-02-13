@@ -1,4 +1,5 @@
 using SimpleTodoList.API.Helpers.Extensions;
+using SimpleTodoList.Core.Models.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,8 +16,11 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapIdentityApi<AppUser>();
 
 app.Run();
