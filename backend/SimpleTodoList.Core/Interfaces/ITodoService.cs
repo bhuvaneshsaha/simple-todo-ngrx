@@ -1,4 +1,5 @@
 
+using SimpleTodoList.Core.Models;
 using SimpleTodoList.Core.Models.Dtos;
 using SimpleTodoList.Core.Models.Entities;
 
@@ -10,7 +11,7 @@ public interface ITodoService
     /// Get all tasks from the database
     /// </summary>
     /// <returns></returns>
-    Task<IEnumerable<Todo>> GetTodosAsync();
+    Task<PagedList<Todo>> GetTodosAsync(int pageNumber, int pageSize);
 
     /// <summary>
     /// Get a task by its id

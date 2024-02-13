@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using SimpleTodoList.API.Helpers.Extensions;
 using SimpleTodoList.Core.Interfaces;
+using SimpleTodoList.Core.Models;
 using SimpleTodoList.Core.Models.Dtos;
 
 namespace SimpleTodoList.API.Controllers;
@@ -9,9 +11,10 @@ namespace SimpleTodoList.API.Controllers;
 public class TodoController(ITodoService todoService) : BaseController
 {
     [HttpGet]
-    public async Task<IActionResult> GetTodos()
+    public async Task<IActionResult> GetTodos([FromQuery]UserParams userParams)
     {
-        var todos = await todoService.GetTodosAsync();
+        var todos = await todoService.GetTodosAsync(userParams.PageNumber, userParams.PageSize);
+        Response.AddPaginationInHeader(todos.CurrentPage, todos.TotalPages, todos.PageSize, todos.TotalCount);
         return Ok(todos);
     }
 
@@ -49,5 +52,5 @@ public class TodoController(ITodoService todoService) : BaseController
         await todoService.CompleteTodoAsync(id);
         return NoContent();
     }
-
 }
+
