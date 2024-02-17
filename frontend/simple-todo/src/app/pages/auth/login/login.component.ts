@@ -36,4 +36,12 @@ export class LoginComponent {
     const { email, password } = this.form.value;
     this.authStore.login(email!, password!);
   }
+
+  fieldErrors(field: string) {
+    const control = this.form.get(field);
+    if (control?.touched && control?.errors) {
+      return Object.keys(control.errors).join(', ');
+    }
+    return '';
+  }
 }

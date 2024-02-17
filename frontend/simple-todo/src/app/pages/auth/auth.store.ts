@@ -46,6 +46,7 @@ export const AuthStore = signalStore(
         state.accessToken = null;
         state.refreshToken = null;
         state.expiresIn = null;
+        router.navigate(['/login']);
         return state;
       });
     },
