@@ -1,0 +1,13 @@
+<div>
+  <form [formGroup]="form">
+    <label for="email">Email: </label>
+    <input id="email" type="text" formControlName="email" />
+
+    <label for="password">Password </label>
+    <input id="password" type="password" formControlName="password" />
+
+    <button (click)="login()">Login</button>
+  </form>
+</div>
+
+{{this.form.valid}}
