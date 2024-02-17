@@ -38,6 +38,9 @@ public class TodoService(ITodoRepo todoRepo) : ITodoService
 
     public async Task DeleteTodoAsync(Guid id)
     {
+        var existingTodo = await todoRepo.GetTodoByIdAsync(id);
+        Guard.IsNotNull(existingTodo);
+
         await todoRepo.DeleteTodoAsync(id);
         await todoRepo.SaveChangesAsync();
     }
@@ -55,7 +58,6 @@ public class TodoService(ITodoRepo todoRepo) : ITodoService
     public async Task<Todo> UpdateTodoAsync(Guid id, AddOrUpdateTodoDto task)
     {
         var existingTodo = await todoRepo.GetTodoByIdAsync(id);
-
         Guard.IsNotNull(existingTodo);
 
         existingTodo.Title = task.Title;
