@@ -1,0 +1,13 @@
+<hr>
+{{ todoStore.pagination.CurrentPage() }}
+{{ todoStore.pagination.TotalCount() }}
+{{ todoStore.pagination.PageSize() }}
+<hr>
+
+@for (item of todoStore.tasks(); track item.id) {
+<div>
+  <span>{{ item.title }}</span>
+</div>
+} @empty {
+<div>There are no items.</div>
+}

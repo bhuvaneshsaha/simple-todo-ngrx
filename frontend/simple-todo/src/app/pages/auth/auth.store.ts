@@ -8,6 +8,7 @@ import {
 } from '@ngrx/signals';
 import { AuthService } from './auth.service';
 import { DateUtil } from '../../shared/utils/date-util';
+import { Router } from '@angular/router';
 
 type AuthState = {
   accessToken: string | null;
@@ -26,7 +27,7 @@ export const AuthStore = signalStore(
   withComputed(({ accessToken }) => ({
     isAuthenticated: computed(() => !!accessToken()),
   })),
-  withMethods((store, authService = inject(AuthService)) => ({
+  withMethods((store, authService = inject(AuthService), router = inject(Router)) => ({
     login(username: string, password: string) {
       authService.login(username, password).subscribe((response) => {
         patchState(store, (state) => {
@@ -35,6 +36,7 @@ export const AuthStore = signalStore(
           state.expiresIn = DateUtil.calculateExpirationTime(
             response.expiresIn
           );
+          router.navigate(['/']);
           return state;
         });
       });
