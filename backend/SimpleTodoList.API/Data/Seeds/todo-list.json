@@ -1,0 +1,111 @@
+[
+  {
+    "Title": "Sample Todo",
+    "Description": "This is a sample todo item",
+    "IsCompleted": false,
+    "CompletedAt": null,
+    "DeletedAt": null,
+    "CreatedAt": "2024-02-18T12:00:00.000Z",
+    "UpdatedAt": null
+  },
+  {
+    "Title": "Fix some list in the todo list",
+    "Description": "This is a sample todo item description",
+    "IsCompleted": false,
+    "CompletedAt": null,
+    "DeletedAt": null,
+    "CreatedAt": "2024-02-18T12:00:00.000Z",
+    "UpdatedAt": null
+  },
+  {
+    "Title": "Add some list in the todo list",
+    "Description": "Add todo item description as a sample todo item description",
+    "IsCompleted": false,
+    "CompletedAt": null,
+    "DeletedAt": null,
+    "CreatedAt": "2024-02-18T12:00:00.000Z",
+    "UpdatedAt": null
+  },
+  {
+    "Title": "Delete some list in the todo list",
+    "Description": "Delete todo item description as a sample todo item description",
+    "IsCompleted": false,
+    "CompletedAt": null,
+    "DeletedAt": null,
+    "CreatedAt": "2024-02-18T12:00:00.000Z",
+    "UpdatedAt": null
+  },
+  {
+    "Title": "Update some list in the todo list",
+    "Description": "Update todo item description as a sample todo item description",
+    "IsCompleted": false,
+    "CompletedAt": null,
+    "DeletedAt": null,
+    "CreatedAt": "2024-02-18T12:00:00.000Z",
+    "UpdatedAt": null
+  },
+  {
+    "Title": "Complete some list in the todo list",
+    "Description": "Complete todo item description as a sample todo item description",
+    "IsCompleted": false,
+    "CompletedAt": null,
+    "DeletedAt": null,
+    "CreatedAt": "2024-02-18T12:00:00.000Z",
+    "UpdatedAt": null
+  },
+  {
+    "Title": "Uncomplete some list in the todo list",
+    "Description": "Uncomplete todo item description as a sample todo item description",
+    "IsCompleted": false,
+    "CompletedAt": null,
+    "DeletedAt": null,
+    "CreatedAt": "2024-02-18T12:00:00.000Z",
+    "UpdatedAt": null
+  },
+  {
+    "Title": "Delete some list in the todo list",
+    "Description": "Delete todo item description as a sample todo item description",
+    "IsCompleted": false,
+    "CompletedAt": null,
+    "DeletedAt": null,
+    "CreatedAt": "2024-02-18T12:00:00.000Z",
+    "UpdatedAt": null
+  },
+  {
+    "Title": "Update some list in the todo list",
+    "Description": "Update todo item description as a sample todo item description",
+    "IsCompleted": false,
+    "CompletedAt": null,
+    "DeletedAt": null,
+    "CreatedAt": "2024-02-18T12:00:00.000Z",
+    "UpdatedAt": null
+  },
+  {
+    "Title": "Complete some list in the todo list",
+    "Description": "Complete todo item description as a sample todo item description",
+    "IsCompleted": false,
+    "CompletedAt": null,
+    "DeletedAt": null,
+    "CreatedAt": "2024-02-18T12:00:00.000Z",
+    "UpdatedAt": null
+  },
+  {
+    "Title": "Uncomplete some list in the todo list",
+    "Description": "Uncomplete todo item description as a sample todo item description",
+    "IsCompleted": false,
+    "CompletedAt": null,
+    "DeletedAt": null,
+    "CreatedAt": "2024-02-18T12:00:00.000Z",
+    "UpdatedAt": null
+  },
+  {
+    "Title": "Delete some list in the todo list",
+    "Description": "Delete todo item description as a sample todo item description",
+    "IsCompleted": false,
+    "CompletedAt": null,
+    "DeletedAt": null,
+    "CreatedAt": "2024-02-18T12:00:00.000Z",
+    "UpdatedAt": null
+  }
+
+]
