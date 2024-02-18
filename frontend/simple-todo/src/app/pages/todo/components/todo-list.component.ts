@@ -8,11 +8,11 @@ import { Task } from '../../../core/models/task';
   template: `
     <div class="todo-list overflow-auto">
       @for (item of tasks(); track item.id) {
-      <div>
-        <span>{{ item.title }}</span>
-      </div>
+        <div>
+          <span>{{ item.title }}</span>
+        </div>
       } @empty {
-      <div>There are no items.</div>
+        <div>There are no items.</div>
       }
     </div>
   `,

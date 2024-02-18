@@ -64,5 +64,5 @@ export const TaskStore = signalStore(
         return state;
       });
     },
-  }))
+  })),
 );

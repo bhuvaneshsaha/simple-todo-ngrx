@@ -2,15 +2,15 @@
   <div class="join grid grid-cols-2">
     <button
       class="join-item btn btn-outline btn-sm"
-      [disabled]="isPreviousPageDisabled()"
       (click)="previousPage()"
+      [disabled]="isPreviousPageDisabled()"
     >
       Previous
     </button>
     <button
       class="join-item btn btn-outline btn-sm"
-      [disabled]="isNextPageDisabled()"
       (click)="nextPage()"
+      [disabled]="isNextPageDisabled()"
     >
       Next
     </button>

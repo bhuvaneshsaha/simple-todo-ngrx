@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [FormsModule],
   templateUrl: './filters.component.html',
-  styleUrl: './filters.component.scss'
+  styleUrl: './filters.component.scss',
 })
 export class FiltersComponent {
   @Input() perPage = 10;
@@ -16,5 +16,4 @@ export class FiltersComponent {
   pageUpdated() {
     this.pageSizeUpdated.emit(this.perPage);
   }
-
 }

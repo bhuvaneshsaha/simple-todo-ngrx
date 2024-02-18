@@ -29,7 +29,7 @@ export const AuthStore = signalStore(
   withComputed(({ accessToken, expiresIn }) => ({
     isAuthenticated: computed(() => !!accessToken()),
     isExpired: computed(() =>
-      DateUtil.isExpired(expiresIn() ? expiresIn()! : 0)
+      DateUtil.isExpired(expiresIn() ? expiresIn()! : 0),
     ),
   })),
   withMethods(
@@ -40,7 +40,7 @@ export const AuthStore = signalStore(
             state.accessToken = response.accessToken;
             state.refreshToken = response.refreshToken;
             state.expiresIn = DateUtil.calculateExpirationTime(
-              response.expiresIn
+              response.expiresIn,
             );
             router.navigate(['/']);
             localStorage.setItem('auth-state', JSON.stringify(state));
@@ -57,6 +57,6 @@ export const AuthStore = signalStore(
           return state;
         });
       },
-    })
-  )
+    }),
+  ),
 );

@@ -12,11 +12,11 @@ export const paginationInterceptor: HttpInterceptorFn = (req, next) => {
         const pagination = response.headers.get('x-pagination');
         if (pagination) {
           taskStore.updatePagination(
-            JSON.parse(response.headers.get('x-pagination')!)
+            JSON.parse(response.headers.get('x-pagination')!),
           );
         }
       }
       return response;
-    })
+    }),
   );
 };

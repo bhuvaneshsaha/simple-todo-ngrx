@@ -6,7 +6,7 @@ export class DateUtil {
   static calculateExpirationTime(expiresIn: number): number {
     const currentDateTime = new Date();
     const expirationTime = new Date(
-      currentDateTime.getTime() + expiresIn * 1000
+      currentDateTime.getTime() + expiresIn * 1000,
     ); // Convert expiresIn from seconds to milliseconds
     return expirationTime.getTime();
   }

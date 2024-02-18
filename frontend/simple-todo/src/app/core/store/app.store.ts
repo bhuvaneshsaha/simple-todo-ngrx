@@ -17,5 +17,5 @@ export const AppStore = signalStore(
         return state;
       });
     },
-  }))
+  })),
 );

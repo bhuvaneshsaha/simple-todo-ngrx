@@ -12,6 +12,6 @@ export const loadingInterceptor: HttpInterceptorFn = (req, next) => {
       if (response instanceof HttpResponse) {
         appStore.setLoading(false);
       }
-    })
+    }),
   );
 };

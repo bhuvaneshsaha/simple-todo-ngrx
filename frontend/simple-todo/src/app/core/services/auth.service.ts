@@ -11,7 +11,7 @@ export class AuthService {
 
   login(
     username: string,
-    password: string
+    password: string,
   ): Observable<AccessTokenResponseDto> {
     return this.http.post<AccessTokenResponseDto>('/api/login', {
       email: username,

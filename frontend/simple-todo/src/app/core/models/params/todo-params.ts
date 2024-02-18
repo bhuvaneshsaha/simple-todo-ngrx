@@ -4,6 +4,6 @@ export class TodoParams {
     public pageSize: number = 10,
     public search: string = '',
     public sort: string = '',
-    public order: string = ''
+    public order: string = '',
   ) {}
 }

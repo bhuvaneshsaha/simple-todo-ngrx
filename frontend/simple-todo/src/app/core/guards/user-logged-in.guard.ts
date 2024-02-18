@@ -11,7 +11,7 @@ export const userLoggedInGuard: CanActivateFn = () => {
     router.navigate(['/login']);
   }
 
-  if(isExpired) {
+  if (isExpired) {
     inject(AuthStore).logout();
     router.navigate(['/login']);
   }
