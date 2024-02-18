@@ -1,16 +1,15 @@
 import { Component, input } from '@angular/core';
 import { Task } from '../../../core/models/task';
+import { TodoItemComponent } from './todo-item.component';
 
 @Component({
   selector: 'app-todo-list',
   standalone: true,
-  imports: [],
+  imports: [TodoItemComponent],
   template: `
-    <div class="todo-list overflow-auto">
+    <div class="todo-list overflow-auto flex flex-col gap-2">
       @for (item of tasks(); track item.id) {
-        <div>
-          <span>{{ item.title }}</span>
-        </div>
+        <app-todo-item [task]="item"></app-todo-item>
       } @empty {
         <div>There are no items.</div>
       }

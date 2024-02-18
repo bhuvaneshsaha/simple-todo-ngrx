@@ -14,7 +14,7 @@ export const loadingInterceptor: HttpInterceptorFn = (req, next) => {
           appStore.setLoading(false);
         }
       },
-      error: (error) => {
+      error: () => {
         appStore.setLoading(false);
       },
     }),
