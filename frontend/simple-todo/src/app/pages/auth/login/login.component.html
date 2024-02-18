@@ -1,0 +1,40 @@
+<div class="container w-full flex justify-center">
+  <form [formGroup]="form" class="w-96 flex flex-col gap-3">
+    <h1 class="text-3xl font-bold">Login</h1>
+    <label for="email" class="input input-bordered flex items-center gap-2">
+      Email
+      <input
+        id="email"
+        type="text"
+        class="grow"
+        placeholder="Daisy"
+        formControlName="email"
+      />
+    </label>
+    <div class=" text-warning">
+      {{ fieldErrors('email') }}
+    </div>
+    <label for="password" class="input input-bordered flex items-center gap-2">
+      Password
+      <input
+        id="password"
+        type="password"
+        class="grow"
+        placeholder="Password"
+        formControlName="password"
+      />
+    </label>
+
+    <div class="text-warning" >
+      {{ fieldErrors('password') }}
+    </div>
+
+    <button
+      class="btn btn-primary"
+      (click)="login()"
+      [disabled]="!this.form.valid"
+    >
+      Login
+    </button>
+  </form>
+</div>

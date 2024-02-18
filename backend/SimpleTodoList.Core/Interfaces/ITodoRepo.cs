@@ -1,3 +1,4 @@
+using SimpleTodoList.Core.Models;
 using SimpleTodoList.Core.Models.Entities;
 
 namespace SimpleTodoList.Core.Interfaces;
@@ -7,7 +8,7 @@ public interface ITodoRepo
     /// Get all todos from the database
     /// </summary>
     /// <returns></returns>
-    Task<IEnumerable<Todo>> GetTodosAsync();
+    Task<PagedList<Todo>> GetTodosAsync(int pageNumber, int pageSize);
 
     /// <summary>
     /// Get a task by its id

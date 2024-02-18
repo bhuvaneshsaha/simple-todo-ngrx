@@ -1,14 +1,15 @@
 using Microsoft.EntityFrameworkCore;
 using SimpleTodoList.Core.Interfaces;
+using SimpleTodoList.Core.Models;
 using SimpleTodoList.Core.Models.Entities;
 using SimpleTodoList.Infra.Data;
 
 namespace SimpleTodoList.Infra.Repos;
 public class TodoRepo(TodoDbContext dbContext) : ITodoRepo
 {
-    public async Task<Todo> CreateTodoAsync(Todo todo)
+    public async Task<Todo> CreateTodoAsync(Todo task)
     {
-        var todoEntity = await dbContext.Todos.AddAsync(todo);
+        var todoEntity = await dbContext.Todos.AddAsync(task);
         return todoEntity.Entity;
     }
 
@@ -22,14 +23,14 @@ public class TodoRepo(TodoDbContext dbContext) : ITodoRepo
         return await dbContext.Todos.FindAsync(id);
     }
 
-    public async Task<IEnumerable<Todo>> GetTodosAsync()
+    public async Task<PagedList<Todo>> GetTodosAsync(int pageNumber, int pageSize)
     {
-        return await dbContext.Todos.AsNoTracking().ToListAsync();
+        return await PagedList<Todo>.CreateAsync(dbContext.Todos.AsNoTracking(), pageNumber, pageSize);
     }
 
-    public async Task<Todo> UpdateTodoAsync(Todo todo)
+    public async Task<Todo> UpdateTodoAsync(Todo task)
     {
-        var todoEntity = await Task.Run(() => dbContext.Todos.Update(todo));
+        var todoEntity = await Task.Run(() => dbContext.Todos.Update(task));
         return todoEntity.Entity;
     }
 
