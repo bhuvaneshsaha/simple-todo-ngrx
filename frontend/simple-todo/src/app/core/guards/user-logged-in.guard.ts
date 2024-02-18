@@ -4,9 +4,15 @@ import { AuthStore } from '../store/auth.store';
 
 export const userLoggedInGuard: CanActivateFn = () => {
   const isAuthenticated = inject(AuthStore).isAuthenticated();
+  const isExpired = inject(AuthStore).isExpired();
   const router = inject(Router);
 
   if (!isAuthenticated) {
+    router.navigate(['/login']);
+  }
+
+  if(isExpired) {
+    inject(AuthStore).logout();
     router.navigate(['/login']);
   }
 

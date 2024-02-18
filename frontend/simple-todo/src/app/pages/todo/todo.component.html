@@ -1,15 +1,13 @@
-@for (item of todoStore.tasks(); track item.id) {
-<div>
-  <span>{{ item.title }}</span>
-</div>
-} @empty {
-<div>There are no items.</div>
-}
+<div class="max-h-full todo-container gap-2">
+  <app-filters (pageSizeUpdated)="pageSizeUpdated($event)" />
 
-<div class="flex w-full justify-center">
-  <app-pagination
-    class="w-64"
-    [pagination]="this.todoStore.pagination()"
-    (pageChanged)="pageChanged($event)"
-  />
+  <app-todo-list class="h-full overflow-auto" [tasks]="todoStore.tasks()" />
+
+  <div class="flex w-full h-20 justify-center">
+    <app-pagination
+      class="w-64"
+      [pagination]="this.todoStore.pagination()"
+      (pageChanged)="pageChanged($event)"
+    />
+  </div>
 </div>

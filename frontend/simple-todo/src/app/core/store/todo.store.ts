@@ -25,8 +25,15 @@ export const initialState: TaskState = {
 export const TaskStore = signalStore(
   withState(initialState),
   withMethods((store, taskService = inject(TaskService)) => ({
-    getTasks(todoParam: TodoParams) {
-      taskService.getTasks(todoParam).subscribe({
+    getTasks() {
+      const params: TodoParams = {
+        pageNumber: store.pagination.CurrentPage(),
+        pageSize: store.pagination.PageSize(),
+        order: 'id',
+        search: '',
+        sort: 'asc',
+      };
+      taskService.getTasks(params).subscribe({
         next: (tasks) => {
           patchState(store, (state) => {
             state.tasks = tasks;
@@ -56,6 +63,6 @@ export const TaskStore = signalStore(
         state.pagination = initialState.pagination;
         return state;
       });
-    }
+    },
   }))
 );

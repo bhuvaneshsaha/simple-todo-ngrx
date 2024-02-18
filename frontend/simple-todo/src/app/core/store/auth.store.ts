@@ -26,8 +26,11 @@ const initialState: AuthState = {
 
 export const AuthStore = signalStore(
   withState(initialState),
-  withComputed(({ accessToken }) => ({
+  withComputed(({ accessToken, expiresIn }) => ({
     isAuthenticated: computed(() => !!accessToken()),
+    isExpired: computed(() =>
+      DateUtil.isExpired(expiresIn() ? expiresIn()! : 0)
+    ),
   })),
   withMethods(
     (store, authService = inject(AuthService), router = inject(Router)) => ({
