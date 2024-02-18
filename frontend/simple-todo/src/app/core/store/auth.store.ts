@@ -16,10 +16,12 @@ type AuthState = {
   expiresIn: number | null;
 };
 
+const authState = localStorage.getItem('auth-state');
+
 const initialState: AuthState = {
-  accessToken: null,
-  refreshToken: null,
-  expiresIn: null,
+  accessToken: authState ? JSON.parse(authState).accessToken : null,
+  refreshToken: authState ? JSON.parse(authState).refreshToken : null,
+  expiresIn: authState ? JSON.parse(authState).expiresIn : null,
 };
 
 export const AuthStore = signalStore(
@@ -27,28 +29,31 @@ export const AuthStore = signalStore(
   withComputed(({ accessToken }) => ({
     isAuthenticated: computed(() => !!accessToken()),
   })),
-  withMethods((store, authService = inject(AuthService), router = inject(Router)) => ({
-    login(username: string, password: string) {
-      authService.login(username, password).subscribe((response) => {
+  withMethods(
+    (store, authService = inject(AuthService), router = inject(Router)) => ({
+      login(username: string, password: string) {
+        authService.login(username, password).subscribe((response) => {
+          patchState(store, (state) => {
+            state.accessToken = response.accessToken;
+            state.refreshToken = response.refreshToken;
+            state.expiresIn = DateUtil.calculateExpirationTime(
+              response.expiresIn
+            );
+            router.navigate(['/']);
+            localStorage.setItem('auth-state', JSON.stringify(state));
+            return state;
+          });
+        });
+      },
+      logout() {
         patchState(store, (state) => {
-          state.accessToken = response.accessToken;
-          state.refreshToken = response.refreshToken;
-          state.expiresIn = DateUtil.calculateExpirationTime(
-            response.expiresIn
-          );
-          router.navigate(['/']);
+          state.accessToken = null;
+          state.refreshToken = null;
+          state.expiresIn = null;
+          router.navigate(['/login']);
           return state;
         });
-      });
-    },
-    logout() {
-      patchState(store, (state) => {
-        state.accessToken = null;
-        state.refreshToken = null;
-        state.expiresIn = null;
-        router.navigate(['/login']);
-        return state;
-      });
-    },
-  }))
+      },
+    })
+  )
 );

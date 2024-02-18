@@ -1,9 +1,3 @@
-<hr>
-{{ todoStore.pagination.CurrentPage() }}
-{{ todoStore.pagination.TotalCount() }}
-{{ todoStore.pagination.PageSize() }}
-<hr>
-
 @for (item of todoStore.tasks(); track item.id) {
 <div>
   <span>{{ item.title }}</span>
@@ -12,11 +6,10 @@
 <div>There are no items.</div>
 }
 
-
-<button class="btn">Button</button>
-<button class="btn btn-neutral">Neutral</button>
-<button class="btn btn-primary">Primary</button>
-<button class="btn btn-secondary">Secondary</button>
-<button class="btn btn-accent">Accent</button>
-<button class="btn btn-ghost">Ghost</button>
-<button class="btn btn-link">Link</button>
+<div class="flex w-full justify-center">
+  <app-pagination
+    class="w-64"
+    [pagination]="this.todoStore.pagination()"
+    (pageChanged)="pageChanged($event)"
+  />
+</div>

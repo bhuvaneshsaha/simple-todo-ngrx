@@ -1,0 +1,23 @@
+<div class="join grid grid-cols-2">
+  <button
+    class="join-item btn btn-outline btn-sm"
+    [disabled]="isPreviousPageDisabled()"
+    (click)="previousPage()"
+  >
+    Previous
+  </button>
+  <button
+    class="join-item btn btn-outline btn-sm"
+    [disabled]="isNextPageDisabled()"
+    (click)="nextPage()"
+  >
+    Next
+  </button>
+</div>
+
+Current Page : {{ this.pagination().CurrentPage }} Total Count :
+{{ this.pagination().TotalCount }} Page Size :
+{{ this.pagination().PageSize }} Total Pages :
+{{ this.pagination().TotalPages }}
+
+{{ isNextPageDisabled() }}
