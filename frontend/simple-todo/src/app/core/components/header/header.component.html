@@ -59,7 +59,7 @@
           </a>
         </li>
         <li><a>Settings</a></li>
-        <li (click)="authStore.logout()"><a>Logout</a></li>
+        <li (keydown)="authStore.logout()" tabindex="0"><a>Logout</a></li>
       </ul>
     </div>
   </div>

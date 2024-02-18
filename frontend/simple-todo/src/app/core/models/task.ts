@@ -3,8 +3,8 @@ export interface Task {
   title: string
   description: string
   isCompleted: boolean
-  completedAt: any
-  deletedAt: any
-  createdAt: string
-  updatedAt: any
+  completedAt?: Date
+  deletedAt?: Date
+  createdAt?: Date
+  updatedAt?: Date
 }

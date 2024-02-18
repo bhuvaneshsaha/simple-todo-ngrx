@@ -1,8 +1,6 @@
 import {
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
-  computed,
   inject,
 } from '@angular/core';
 import { AuthStore } from '../../../core/store/auth.store';

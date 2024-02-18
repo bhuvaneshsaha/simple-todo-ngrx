@@ -1,6 +1,5 @@
 import { Component, inject } from '@angular/core';
 import { TaskStore } from '../../core/store/todo.store';
-import { TodoParams } from '../../core/models/params/todo-params';
 import { PaginationComponent } from '../../shared/components/pagination/pagination.component';
 import { FiltersComponent } from '../../shared/components/filters/filters.component';
 import { TodoListComponent } from './components/todo-list.component';
