@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { AccessTokenResponseDto } from './models/auth.dto';
+import { AccessTokenResponseDto } from '../../pages/auth/models/auth.dto';
 import { Observable } from 'rxjs';
 
 @Injectable({

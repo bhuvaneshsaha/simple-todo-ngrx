@@ -6,7 +6,7 @@ import {
   withMethods,
   withState,
 } from '@ngrx/signals';
-import { AuthService } from './auth.service';
+import { AuthService } from '../services/auth.service';
 import { DateUtil } from '../../shared/utils/date-util';
 import { Router } from '@angular/router';
 

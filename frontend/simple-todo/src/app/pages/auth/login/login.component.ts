@@ -5,7 +5,7 @@ import {
   computed,
   inject,
 } from '@angular/core';
-import { AuthStore } from '../auth.store';
+import { AuthStore } from '../../../core/store/auth.store';
 import {
   FormControl,
   FormGroup,

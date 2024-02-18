@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { AuthStore } from '../../../pages/auth/auth.store';
+import { AuthStore } from '../../store/auth.store';
 import { CommonModule } from '@angular/common';
 
 @Component({
