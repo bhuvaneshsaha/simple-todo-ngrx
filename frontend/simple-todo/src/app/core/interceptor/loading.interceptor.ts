@@ -8,10 +8,15 @@ export const loadingInterceptor: HttpInterceptorFn = (req, next) => {
   appStore.setLoading(true);
 
   return next(req).pipe(
-    tap((response) => {
-      if (response instanceof HttpResponse) {
+    tap({
+      next: (response) => {
+        if (response instanceof HttpResponse) {
+          appStore.setLoading(false);
+        }
+      },
+      error: (error) => {
         appStore.setLoading(false);
-      }
+      },
     }),
   );
 };
