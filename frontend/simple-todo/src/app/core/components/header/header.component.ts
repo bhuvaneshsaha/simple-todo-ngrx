@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { AuthStore } from '../../../pages/auth/auth.store';
+import { AuthStore } from '../../store/auth.store';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
+  styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
   authStore = inject(AuthStore);

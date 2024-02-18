@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { AccessTokenResponseDto } from './models/auth.dto';
+import { AccessTokenResponseDto } from '../../pages/auth/models/auth.dto';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -11,7 +11,7 @@ export class AuthService {
 
   login(
     username: string,
-    password: string
+    password: string,
   ): Observable<AccessTokenResponseDto> {
     return this.http.post<AccessTokenResponseDto>('/api/login', {
       email: username,

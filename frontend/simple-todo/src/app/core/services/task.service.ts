@@ -12,7 +12,7 @@ export class TaskService {
 
   getTasks(todoParam: TodoParams): Observable<Task[]> {
     const params = {
-      page: todoParam.page.toString(),
+      pageNumber: todoParam.pageNumber.toString(),
       pageSize: todoParam.pageSize.toString(),
       search: todoParam.search,
       sort: todoParam.sort,

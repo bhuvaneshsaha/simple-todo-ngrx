@@ -7,8 +7,8 @@
       <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
         <div class="indicator">
           <svg
-            xmlns="http://www.w3.org/2000/svg"
             class="h-5 w-5"
+            xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -59,7 +59,7 @@
           </a>
         </li>
         <li><a>Settings</a></li>
-        <li (click)="authStore.logout()"><a>Logout</a></li>
+        <li tabindex="0" (keydown)="authStore.logout()"><a>Logout</a></li>
       </ul>
     </div>
   </div>

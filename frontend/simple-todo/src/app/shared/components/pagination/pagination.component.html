@@ -1,0 +1,22 @@
+<div class="flex flex-col items-center">
+  <div class="join grid grid-cols-2">
+    <button
+      class="join-item btn btn-outline btn-sm"
+      (click)="previousPage()"
+      [disabled]="isPreviousPageDisabled()"
+    >
+      Previous
+    </button>
+    <button
+      class="join-item btn btn-outline btn-sm"
+      (click)="nextPage()"
+      [disabled]="isNextPageDisabled()"
+    >
+      Next
+    </button>
+  </div>
+  <div>
+    Page {{ this.pagination().CurrentPage }} of
+    {{ this.pagination().TotalPages }}
+  </div>
+</div>

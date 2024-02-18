@@ -4,7 +4,7 @@ import { HttpInterceptorFn } from '@angular/common/http';
 import { paginationInterceptor } from './pagination.interceptor';
 
 describe('paginationInterceptor', () => {
-  const interceptor: HttpInterceptorFn = (req, next) => 
+  const interceptor: HttpInterceptorFn = (req, next) =>
     TestBed.runInInjectionContext(() => paginationInterceptor(req, next));
 
   beforeEach(() => {

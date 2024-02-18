@@ -1,11 +1,5 @@
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  computed,
-  inject,
-} from '@angular/core';
-import { AuthStore } from '../auth.store';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { AuthStore } from '../../../core/store/auth.store';
 import {
   FormControl,
   FormGroup,

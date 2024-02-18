@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './core/components/header/header.component';
 import { LoaderComponent } from './core/components/loader/loader.component';
+import { AppStore } from './core/store/app.store';
 
 @Component({
   selector: 'app-root',
@@ -11,5 +12,5 @@ import { LoaderComponent } from './core/components/loader/loader.component';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'simple-todo';
+  appStore = inject(AppStore);
 }

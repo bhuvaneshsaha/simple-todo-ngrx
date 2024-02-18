@@ -21,7 +21,8 @@ public class PagedList<T> : List<T>
     public static async Task<PagedList<T>> CreateAsync(IQueryable<T> query, int pageNumber, int pageSize)
     {
         var count = await query.CountAsync();
-        var items = await query.Skip(pageNumber).Take(pageSize).ToListAsync();
+        var countToSkip = (pageNumber - 1) * pageSize;
+        var items = await query.Skip(countToSkip).Take(pageSize).ToListAsync();
         return new PagedList<T>(items, count, pageNumber, pageSize);
     }
 }
