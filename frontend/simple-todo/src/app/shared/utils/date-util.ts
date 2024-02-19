@@ -3,12 +3,12 @@ export class DateUtil {
     return date.toISOString();
   }
 
-  static calculateExpirationTime(expiresIn: number): number {
+  static calculateExpirationTime(expiresIn: number): Date {
     const currentDateTime = new Date();
     const expirationTime = new Date(
       currentDateTime.getTime() + expiresIn * 1000,
     ); // Convert expiresIn from seconds to milliseconds
-    return expirationTime.getTime();
+    return expirationTime;
   }
 
   static isExpired(expirationTime: number): boolean {

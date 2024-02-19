@@ -10,4 +10,7 @@
       (pageChanged)="pageChanged($event)"
     />
   </div>
+  @if (todoStore.tasks()) {
+    <router-outlet [class.router-active]="isRouterActive"></router-outlet>
+  }
 </div>

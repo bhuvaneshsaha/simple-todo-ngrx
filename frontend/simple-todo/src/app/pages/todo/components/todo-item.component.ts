@@ -1,12 +1,17 @@
 import { Component, input } from '@angular/core';
 import { Task } from '../../../core/models/task';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-todo-item',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   template: `
-    <div class="flex gap-3 border-2 border-orange-800">
+    <div
+      class="flex gap-3 border-2 border-orange-800"
+      [routerLink]="['/details', task().id]"
+      routerLinkActive="router-link-active"
+    >
       <div>
         <input type="checkbox" [checked]="task().isCompleted" />
       </div>

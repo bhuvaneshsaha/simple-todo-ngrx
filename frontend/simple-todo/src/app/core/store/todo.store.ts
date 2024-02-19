@@ -1,18 +1,26 @@
-import { patchState, signalStore, withMethods, withState } from '@ngrx/signals';
+import {
+  patchState,
+  signalStore,
+  withComputed,
+  withMethods,
+  withState,
+} from '@ngrx/signals';
 import { Task } from '../models/task';
-import { inject } from '@angular/core';
+import { computed, inject } from '@angular/core';
 import { TaskService } from '../services/task.service';
 import { TodoParams } from '../models/params/todo-params';
 import { Pagination } from '../models/pagination';
 
 type TaskState = {
   tasks: Task[];
+  activeTaskId: string;
   pagination: Pagination;
   error: string;
 };
 
 export const initialState: TaskState = {
   tasks: [],
+  activeTaskId: '',
   error: '',
   pagination: {
     CurrentPage: 1,
@@ -24,6 +32,11 @@ export const initialState: TaskState = {
 
 export const TaskStore = signalStore(
   withState(initialState),
+  withComputed((store) => ({
+    activeTask: computed(() => {
+      return store.tasks().find((task) => task.id === store.activeTaskId());
+    }),
+  })),
   withMethods((store, taskService = inject(TaskService)) => ({
     getTasks() {
       const params: TodoParams = {
@@ -48,6 +61,12 @@ export const TaskStore = signalStore(
             return state;
           });
         },
+      });
+    },
+    setActiveTask(id: string) {
+      patchState(store, (state) => {
+        state.activeTaskId = id;
+        return state;
       });
     },
     updatePagination(pagination: Pagination) {

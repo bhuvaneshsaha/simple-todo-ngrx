@@ -7,7 +7,10 @@ import { TodoItemComponent } from './todo-item.component';
   standalone: true,
   imports: [TodoItemComponent],
   template: `
-    <div class="todo-list overflow-auto flex flex-col gap-2">
+    <div
+      tabindex="0"
+      class="todo-list overflow-auto flex flex-col gap-2"
+    >
       @for (item of tasks(); track item.id) {
         <app-todo-item [task]="item"></app-todo-item>
       } @empty {
@@ -32,4 +35,5 @@ import { TodoItemComponent } from './todo-item.component';
 })
 export class TodoListComponent {
   tasks = input.required<Task[]>();
+
 }

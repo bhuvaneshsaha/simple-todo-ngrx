@@ -3,15 +3,14 @@ import { CanActivateFn, Router } from '@angular/router';
 import { AuthStore } from '../store/auth.store';
 
 export const userLoggedInGuard: CanActivateFn = () => {
-  const isAuthenticated = inject(AuthStore).isAuthenticated();
-  const isExpired = inject(AuthStore).isExpired();
+  const authStore = inject(AuthStore);
   const router = inject(Router);
 
-  if (!isAuthenticated) {
+  if (!authStore.isAuthenticated()) {
     router.navigate(['/login']);
   }
 
-  if (isExpired) {
+  if (authStore.isExpired()) {
     inject(AuthStore).logout();
     router.navigate(['/login']);
   }

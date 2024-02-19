@@ -7,6 +7,15 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./pages/todo/todo.component').then((c) => c.TodoComponent),
     canActivate: [userLoggedInGuard],
+    children: [
+      {
+        path: 'details/:id',
+        loadComponent: () =>
+          import('./pages/todo/components/todo-item-details.component').then(
+            (c) => c.TodoItemDetailsComponent,
+          ),
+      },
+    ],
   },
   {
     path: 'login',
