@@ -28,10 +28,13 @@ export const AuthStore = signalStore(
   withState(initialState),
   withComputed(({ accessToken, tokenExpiry }) => ({
     isAuthenticated: computed(() => !!accessToken()),
-    isExpired: computed(
-      () =>
-        tokenExpiry() && tokenExpiry()! < new Date(Date.now() + 60 * 60 * 1000),
-    ),
+    isExpired: computed(() => {
+      const expiryDate = tokenExpiry(); // Extract the value from the signal
+      if (!expiryDate) {
+        return true;
+      }
+      return DateUtil.currentDate() > expiryDate; // Compare the extracted value with the current date
+    }),
   })),
   withMethods(
     (store, authService = inject(AuthService), router = inject(Router)) => ({
@@ -40,8 +43,8 @@ export const AuthStore = signalStore(
           patchState(store, (state) => {
             state.accessToken = response.accessToken;
             state.refreshToken = response.refreshToken;
-            state.tokenExpiry = DateUtil.calculateExpirationTime(
-              response.expiresIn,
+            state.tokenExpiry = DateUtil.addSecondsToCurrentDate(
+              60,
             );
             router.navigate(['/']);
             localStorage.setItem('auth-state', JSON.stringify(state));

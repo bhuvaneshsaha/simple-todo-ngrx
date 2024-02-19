@@ -1,18 +1,19 @@
+import moment from 'moment';
+
 export class DateUtil {
   static formatDate(date: Date): string {
     return date.toISOString();
   }
 
-  static calculateExpirationTime(expiresIn: number): Date {
-    const currentDateTime = new Date();
-    const expirationTime = new Date(
-      currentDateTime.getTime() + expiresIn * 1000,
-    ); // Convert expiresIn from seconds to milliseconds
-    return expirationTime;
+  static currentDate(): Date {
+    return moment().toDate();
   }
 
-  static isExpired(expirationTime: number): boolean {
-    const currentDateTime = new Date();
-    return currentDateTime.getTime() > expirationTime;
+  static addSeconds(date: Date, seconds: number): Date {
+    return moment(date).add(seconds, 'seconds').toDate();
+  }
+
+  static addSecondsToCurrentDate(seconds: number): Date {
+    return moment().add(seconds, 'seconds').toDate();
   }
 }
